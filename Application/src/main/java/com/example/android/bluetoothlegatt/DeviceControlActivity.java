@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+// (Git test change)
+
 package com.example.android.bluetoothlegatt;
 
 import android.app.Activity;
