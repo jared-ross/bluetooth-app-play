@@ -99,7 +99,6 @@ public class DeviceScanActivity extends ListActivity {
         switch (requestCode) {
             case PERMISSION_REQUEST_COARSE_LOCATION: {
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Log.d(TAG, "permission granted"); //test
                     Log.d(TAG, "coarse location permission granted");
                     // Initializes a Bluetooth adapter.  For API level 18 and above, get a reference to
                     // BluetoothAdapter through BluetoothManager.
@@ -109,8 +108,7 @@ public class DeviceScanActivity extends ListActivity {
 
                     // Checks if Bluetooth is supported on the device.
                     if (mBluetoothAdapter == null) {
-                        Log.d(TAG, "bluetooth not supported"); //test
-                        Toast.makeText(this, R.string.error_bluetooth_not_supported, Toast.LENGTH_SHORT).show();
+                       Toast.makeText(this, R.string.error_bluetooth_not_supported, Toast.LENGTH_SHORT).show();
                         finish();
                         return;
                     }
@@ -165,8 +163,14 @@ public class DeviceScanActivity extends ListActivity {
     protected void onResume() {
         super.onResume();
 
+       /* if(mBluetoothAdapter==null) {
+            System.out.println( "bluetooth not supported mothafucka"); //test
+        } */
         // Ensures Bluetooth is enabled on the device.  If Bluetooth is not currently enabled,
         // fire an intent to display a dialog asking the user to grant permission to enable it.
+
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter(); //added a line to fix the nullpointerexception issue
+        
         if (!mBluetoothAdapter.isEnabled())
         {
             if (!mBluetoothAdapter.isEnabled()) {
