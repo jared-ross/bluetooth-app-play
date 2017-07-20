@@ -162,6 +162,7 @@ public class DeviceScanActivity extends ListActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
        /* if(mBluetoothAdapter==null) {
             System.out.println( "bluetooth not supported mothafucka"); //test
         } */
@@ -169,6 +170,7 @@ public class DeviceScanActivity extends ListActivity {
         // fire an intent to display a dialog asking the user to grant permission to enable it.
 
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter(); //added a line to fix the nullpointerexception issue
+        
         if (!mBluetoothAdapter.isEnabled())
         {
             if (!mBluetoothAdapter.isEnabled()) {
